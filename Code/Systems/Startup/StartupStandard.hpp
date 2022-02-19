@@ -10,7 +10,7 @@
 #include "Extensions/UiWidget/UiWidgetStandard.hpp"
 #include "Editor/EditorCore/EditorStandard.hpp"
 #include "Extensions/Gameplay/GameplayStandard.hpp"
-#include "Systems/ZilchScript/ZilchScriptStandard.hpp"
+//#include "Engine/Scripting/ZilchScriptStandard.hpp"
 #include "Platform/PlatformStandard.hpp"
 
 #include "Startup.hpp"

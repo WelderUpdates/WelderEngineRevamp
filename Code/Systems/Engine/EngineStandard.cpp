@@ -4,6 +4,8 @@
 namespace Zero
 {
 
+void ZilchConsolePrint(ConsoleEvent* e);
+
 // Ranges
 ZilchDefineRange(HierarchyNameRange);
 ZilchDefineRange(HierarchyListNameRange);
@@ -369,6 +371,15 @@ ZilchDefineStaticLibrary(EngineLibrary)
 
   ZilchInitializeType(ZilchLibraryResource);
   ZilchInitializeType(ZilchDocumentResource);
+  
+  // Scripting  
+  ZilchInitializeType(ZilchComponent);
+  ZilchInitializeType(ZilchEvent);
+  ZilchInitializeType(ZilchObject);
+  ZilchInitializeType(ZilchScript);
+
+  ZilchInitializeType(ZilchPluginSource);
+  ZilchInitializeType(ZilchPluginLibrary);
 
   BindActionFunctions(builder);
 
@@ -432,6 +443,14 @@ bool EngineLibrary::Initialize()
   InitializeResourceManager(ColorGradientManager);
   InitializeResourceManager(TextBlockManager);
   InitializeResourceManager(HeightMapSourceManager);
+  
+  InitializeResourceManager(ZilchScriptManager);
+  InitializeResourceManager(ZilchPluginLibraryManager);
+  InitializeResourceManager(ZilchPluginSourceManager);
+
+  ResourceLibrary::sScriptType = ZilchTypeId(ZilchScript);
+
+  EventConnect(&Zilch::Console::Events, Zilch::Events::ConsoleWrite, ZilchConsolePrint);
 
   // Create the engine.
   Engine* engine = new Engine();
@@ -512,6 +531,12 @@ void EngineLibrary::Shutdown()
   SafeDelete(Z::gTweakables);
 
   GetLibrary()->ClearComponents();
+}
+
+void ZilchConsolePrint(ConsoleEvent* e)
+{
+  // Print out the standard formatted error message to the console
+  Console::Print(Filter::DefaultFilter, "%s", e->Text.c_str());
 }
 
 } // namespace Zero

@@ -90,6 +90,7 @@ target_sources(Content
 
 welder_target_includes(Content
   PUBLIC
+    Engine
     Common
     Zilch
     assimp

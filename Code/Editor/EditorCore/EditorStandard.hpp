@@ -6,7 +6,7 @@
 #include "Extensions/Gameplay/GameplayStandard.hpp"
 #include "Foundation/Geometry/GeometryStandard.hpp"
 #include "Systems/Sound/SoundStandard.hpp"
-#include "Systems/ZilchScript/ZilchScriptStandard.hpp"
+//#include "Systems/ZilchScript/ZilchScriptStandard.hpp"
 #include "Extensions/UiWidget/UiWidgetStandard.hpp"
 
 namespace Zero

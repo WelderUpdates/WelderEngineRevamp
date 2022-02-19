@@ -95,7 +95,6 @@ target_link_libraries(WelderLauncher
     Widget
     ZLib
     Zilch
-    ZilchScript
     ZilchShaders
 )
 

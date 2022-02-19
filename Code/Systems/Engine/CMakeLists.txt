@@ -67,8 +67,14 @@ set(Engine_Scripting_Sources
     ${CMAKE_CURRENT_LIST_DIR}/Scripting/ZilchAction.hpp
     ${CMAKE_CURRENT_LIST_DIR}/Scripting/ZilchManager.cpp
     ${CMAKE_CURRENT_LIST_DIR}/Scripting/ZilchManager.hpp
+    ${CMAKE_CURRENT_LIST_DIR}/Scripting/ZilchPlugin.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/Scripting/ZilchPlugin.hpp
     ${CMAKE_CURRENT_LIST_DIR}/Scripting/ZilchResource.cpp
     ${CMAKE_CURRENT_LIST_DIR}/Scripting/ZilchResource.hpp
+    ${CMAKE_CURRENT_LIST_DIR}/Scripting/ZilchScript.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/Scripting/ZilchScript.hpp
+    ${CMAKE_CURRENT_LIST_DIR}/Scripting/ZilchZero.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/Scripting/ZilchZero.hpp
 )
 
 target_sources(Engine

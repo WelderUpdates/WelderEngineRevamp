@@ -29,6 +29,7 @@ class UpdateEvent;
 class ActionSpace;
 class SavingEvent;
 class DocumentResource;
+class ZilchPluginLibrary;
 
 // Engine library
 class ZeroNoImportExport EngineLibrary : public Zilch::StaticLibrary
@@ -148,6 +149,10 @@ private:
 #include "BackgroundTask.hpp"
 #include "SimpleBackgroundTasks.hpp"
 #include "CopyOnWrite.hpp"
+
+#include "Scripting/ZilchScript.hpp"
+#include "Scripting/ZilchZero.hpp"
+#include "Scripting/ZilchPlugin.hpp"
 
 // Co-dependent libraries
 #include "Systems/Content/ContentStandard.hpp"

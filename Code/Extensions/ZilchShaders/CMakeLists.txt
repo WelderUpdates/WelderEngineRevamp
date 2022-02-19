@@ -95,6 +95,7 @@ target_sources(ZilchShaders
 welder_target_includes(ZilchShaders
   PUBLIC
     Common
+    Engine
     Geometry
     Zilch
     SpirvHeaders

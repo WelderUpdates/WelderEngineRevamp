@@ -50,7 +50,6 @@ target_link_libraries(WelderEditor
     Widget
     ZLib
     Zilch
-    ZilchScript
     ZilchShaders
 )
 

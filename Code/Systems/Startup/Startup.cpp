@@ -211,7 +211,7 @@ void ZeroStartup::Initialize()
   EditorLibrary::Initialize();
   UiWidgetLibrary::Initialize();
 
-  ZilchScriptLibrary::Initialize();
+  //ZilchScriptLibrary::Initialize();
 
   NativeBindingList::ValidateTypes();
 
@@ -376,7 +376,7 @@ void ZeroStartup::Shutdown()
     Core::GetInstance().GetLibrary()->ClearComponents();
 
     // Shutdown in reverse order
-    ZilchScriptLibrary::Shutdown();
+    //ZilchScriptLibrary::Shutdown();
 
     UiWidgetLibrary::Shutdown();
     EditorLibrary::Shutdown();
@@ -397,7 +397,7 @@ void ZeroStartup::Shutdown()
     PlatformLibrary::Shutdown();
 
     // ClearLibrary
-    ZilchScriptLibrary::GetInstance().ClearLibrary();
+    //ZilchScriptLibrary::GetInstance().ClearLibrary();
 
     UiWidgetLibrary::GetInstance().ClearLibrary();
     EditorLibrary::GetInstance().ClearLibrary();
@@ -417,7 +417,7 @@ void ZeroStartup::Shutdown()
     GeometryLibrary::GetInstance().ClearLibrary();
 
     // Destroy
-    ZilchScriptLibrary::Destroy();
+    //ZilchScriptLibrary::Destroy();
 
     UiWidgetLibrary::Destroy();
     EditorLibrary::Destroy();
