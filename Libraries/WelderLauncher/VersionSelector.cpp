@@ -1060,7 +1060,7 @@ void VersionSelector::RunProject(ZeroBuild* standalone, StringParam projectPath)
 
   // call zero with our project file
   String commandLine = String::Format("-file \"%s\"", projectPath.c_str());
-  Os::ShellOpenApplication(executablePath, commandLine);
+  Os::ShellOpenApplication(executablePath, commandLine, standalone->mInstallLocation);
 }
 
 void VersionSelector::RunProject(ZeroBuild* standalone, CachedProject* cachedProject)
@@ -1081,7 +1081,7 @@ void VersionSelector::RunNewProject(ZeroBuild* standalone, StringParam projectNa
   if (projectName.Empty() == false)
     commandLine = String::Format("-newProject \"%s\"", projectName.c_str());
 
-  Os::ShellOpenApplication(executablePath, commandLine);
+  Os::ShellOpenApplication(executablePath, commandLine, standalone->mInstallLocation);
 }
 
 void VersionSelector::MarkVersionValid(ZeroBuild* build)
