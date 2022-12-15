@@ -3,8 +3,14 @@ add_library(EditorCore)
 welder_setup_library(EditorCore ${CMAKE_CURRENT_LIST_DIR} TRUE)
 welder_use_precompiled_header(EditorCore ${CMAKE_CURRENT_LIST_DIR})
 
+set(Editor_Scintilla_Sources 
+    ${CMAKE_CURRENT_LIST_DIR}/Scintilla/ScintillaPlatformZero.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/Scintilla/ScintillaPlatformZero.hpp
+)
+
 target_sources(EditorCore
   PRIVATE
+    ${Editor_Scintilla_Sources}
     ${CMAKE_CURRENT_LIST_DIR}/AddRemoveListBox.cpp
     ${CMAKE_CURRENT_LIST_DIR}/AddRemoveListBox.hpp
     ${CMAKE_CURRENT_LIST_DIR}/AddWindow.cpp
@@ -218,8 +224,6 @@ target_sources(EditorCore
     ${CMAKE_CURRENT_LIST_DIR}/RotationBasisGizmos.hpp
     ${CMAKE_CURRENT_LIST_DIR}/SampleCurveEditor.cpp
     ${CMAKE_CURRENT_LIST_DIR}/SampleCurveEditor.hpp
-    ${CMAKE_CURRENT_LIST_DIR}/ScintillaPlatformZero.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/ScintillaPlatformZero.hpp
     ${CMAKE_CURRENT_LIST_DIR}/Scratchboard.cpp
     ${CMAKE_CURRENT_LIST_DIR}/Scratchboard.hpp
     ${CMAKE_CURRENT_LIST_DIR}/ScriptEditor.cpp
