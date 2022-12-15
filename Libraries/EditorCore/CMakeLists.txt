@@ -1,9 +1,9 @@
-add_library(Editor)
+add_library(EditorCore)
 
-welder_setup_library(Editor ${CMAKE_CURRENT_LIST_DIR} TRUE)
-welder_use_precompiled_header(Editor ${CMAKE_CURRENT_LIST_DIR})
+welder_setup_library(EditorCore ${CMAKE_CURRENT_LIST_DIR} TRUE)
+welder_use_precompiled_header(EditorCore ${CMAKE_CURRENT_LIST_DIR})
 
-target_sources(Editor
+target_sources(EditorCore
   PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/AddRemoveListBox.cpp
     ${CMAKE_CURRENT_LIST_DIR}/AddRemoveListBox.hpp
@@ -282,7 +282,7 @@ target_sources(Editor
     ${CMAKE_CURRENT_LIST_DIR}/WatchView.hpp
 )
 
-welder_target_includes(Editor
+welder_target_includes(EditorCore
   PUBLIC
     Scintilla
     Common

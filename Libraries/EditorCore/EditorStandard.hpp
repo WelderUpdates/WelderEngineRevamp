@@ -54,7 +54,7 @@ public:
 #include "VariantEditor.hpp"
 #include "DataBaseTemplate.hpp"
 #include "GraphView.hpp"
-#include "Editor/TileLayout.hpp"
+#include "EditorCore/TileLayout.hpp"
 #include "PreviewWidget.hpp"
 #include "TileView.hpp"
 #include "TreeViewFilter.hpp"

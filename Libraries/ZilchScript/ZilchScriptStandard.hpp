@@ -7,7 +7,7 @@
 #include "ZilchZero.hpp"
 #include "ZilchPlugin.hpp"
 
-#include "Editor/EditorStandard.hpp"
+#include "EditorCore/EditorStandard.hpp"
 
 namespace Zero
 {

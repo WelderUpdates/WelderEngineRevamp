@@ -1,7 +1,7 @@
 // MIT Licensed (see LICENSE.md).
 #pragma once
 
-#include "Editor/EditorStandard.hpp"
+#include "EditorCore/EditorStandard.hpp"
 #include "ZilchShaders/ZilchShadersStandard.hpp"
 
 #include "CodeSplitWindow.hpp"

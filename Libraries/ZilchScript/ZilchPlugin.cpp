@@ -3,7 +3,7 @@
 
 // This is probably a bad dependency, but there's not many
 // other places that make sense for launching the background task
-#include "Editor/SimpleBackgroundTasks.hpp"
+#include "EditorCore/SimpleBackgroundTasks.hpp"
 
 namespace Zero
 {

@@ -21,7 +21,7 @@ target_link_libraries(WelderEditor
     CodeTranslator
     Common
     Content
-    Editor
+    EditorCore
     Engine
     FreeType
     Gameplay
