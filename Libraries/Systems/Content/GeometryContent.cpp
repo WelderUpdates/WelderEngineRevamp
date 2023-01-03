@@ -144,6 +144,13 @@ ContentItem* MakeGeometryContent(ContentInitializer& initializer)
     newGeo->AddComponent(textureContent);
   }
 
+  if (options->mGeometryOptions->mImportMaterials)
+  {
+    MaterialContent* materialContent = new MaterialContent();
+    materialContent->Generate(initializer);
+    newGeo->AddComponent(materialContent);
+  }
+
   return newGeo;
 }
 
@@ -251,6 +258,18 @@ ContentItem* UpdateGeometryContent(ContentItem* existingItem, ContentInitializer
   {
     // we no longer have this option selected, delete it
     geometryContent->RemoveComponent(ZilchTypeId(TextureContent));
+  }
+
+  if (options->mGeometryOptions->mImportMaterials && !geometryContent->has(MaterialContent))
+  {
+    MaterialContent* materialContent = new MaterialContent();
+    materialContent->Generate(initializer);
+    geometryContent->AddComponent(materialContent);
+  }
+  else if (!options->mGeometryOptions->mImportMaterials && geometryContent->has(MaterialContent))
+  {
+    // we no longer have this option selected, delete it
+    geometryContent->RemoveComponent(ZilchTypeId(MaterialContent));
   }
 
   return geometryContent;
@@ -498,6 +517,23 @@ void TextureContent::Generate(ContentInitializer& initializer)
 {
 }
 
+// Material Content
+ZilchDefineType(MaterialContent, builder, type)
+{
+  ZeroBindComponent();
+  ZeroBindSetup(SetupMode::CallSetDefaults);
+  ZeroBindDependency(GeometryContent);
+}
+
+void MaterialContent::Serialize(Serializer& stream)
+{
+  SerializeNameDefault(mMaterials, Array<GeometryResourceEntry>());
+}
+
+void MaterialContent::Generate(ContentInitializer& initializer)
+{
+}
+
 // Geometry Content
 
 String GeometryContent::GetName()
@@ -627,6 +663,7 @@ void CreateGeometryContent(ContentSystem* system)
   AddContentComponent<PhysicsMeshBuilder>(system);
   AddContentComponent<AnimationBuilder>(system);
   AddContentComponent<TextureContent>(system);
+  AddContentComponent<MaterialContent>(system);
 
   AddContent<GeometryContent>(system);
   // COMMON INTERCHANGE FORMATS

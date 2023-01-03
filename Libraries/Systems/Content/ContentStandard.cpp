@@ -111,6 +111,7 @@ ZilchDefineStaticLibrary(ContentMetaLibrary)
   ZilchInitializeType(AnimationClip);
   ZilchInitializeType(AnimationBuilder);
   ZilchInitializeType(TextureContent);
+  ZilchInitializeType(MaterialContent);
   ZilchInitializeType(GeometryContent);
   ZilchInitializeType(AudioContent);
   ZilchInitializeType(TextureInfo);

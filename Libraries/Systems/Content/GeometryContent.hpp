@@ -129,6 +129,19 @@ public:
   Array<GeometryResourceEntry> mTextures;
 };
 
+// Material Content
+// Materials imported from mesh files
+class MaterialContent : public ContentComponent
+{
+public:
+  ZilchDeclareType(MaterialContent, TypeCopyMode::ReferenceType);
+
+  void Serialize(Serializer& stream) override;
+  void Generate(ContentInitializer& initializer) override;
+
+  Array<GeometryResourceEntry> mMaterials;
+};
+
 // Geometry Content
 class GeometryContent : public ContentComposition
 {

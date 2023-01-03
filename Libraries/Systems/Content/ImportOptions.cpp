@@ -52,6 +52,7 @@ ZilchDefineType(GeometryOptions, builder, type)
   ZilchBindFieldProperty(mImportAnimations);
   ZilchBindFieldProperty(mCreateArchetype);
   ZilchBindFieldProperty(mImportTextures);
+  ZilchBindFieldProperty(mImportMaterials);
 
   ZilchBindFieldProperty(mOriginOffset);
   ZilchBindFieldProperty(mScaleConversion)->AddAttribute(PropertyAttributes::cInvalidatesObject);
@@ -84,7 +85,8 @@ GeometryOptions::GeometryOptions(ImportOptions* owner) :
     mCollapsePivots(false),
     mImportAnimations(false),
     mCreateArchetype(true),
-    mImportTextures(false)
+    mImportTextures(false),
+    mImportMaterials(false)
 {
 }
 
