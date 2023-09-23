@@ -40,3 +40,6 @@
 [submodule "External/ZLib/Repo"]
 	path = External/ZLib/Repo
 	url = https://github.com/WelderFoundation/zlib.git
+[submodule "External/IMGUI/Repo"]
+	path = External/IMGUI/Repo
+	url = https://github.com/WelderUpdates/imgui.git
