@@ -6,6 +6,7 @@ namespace Zero
 
 Material* CreateMaterialFromGraphMaterial(SceneGraphMaterial* sceneMaterial)
 {
+  // TODO: Material generation
   String graphMaterialName = ConvertToValidName(sceneMaterial->Name);
   // String diffuseTexture =
   // sceneMaterial->Attributes.FindValue("DiffuseTexture", String());
@@ -69,11 +70,13 @@ Material* FindOrCreateMaterial(SceneGraphSource* source, StringParam materialNam
   if (sceneMaterial->LoadedMaterial)
     return sceneMaterial->LoadedMaterial;
 
+  // TODO: Tagging to figure out what we actually do here
   return CreateMaterialFromGraphMaterial(sceneMaterial);
 }
 
 Material* FindMeshNodeMaterial(SceneGraphSource* source, SceneGraphNode* node)
 {
+  // TODO: Also point of interest forgenerating material
   ContentLibrary* library = Z::gEditor->mProjectLibrary;
 
   Material* material = NULL;
@@ -121,6 +124,7 @@ MeshType* GetNodeMesh(StringParam sourceName, StringParam meshNodeName)
 
 void UpdateMeshes(SceneGraphSource* source, SceneGraphNode* sourceNode, Cog* object, UpdateFlags::Type flags)
 {
+  // TODO: Definitely where we need to assign materials
   if (!(flags & UpdateFlags::Meshes))
     return;
 
@@ -259,6 +263,8 @@ void DoEditorSideGeometryImporting(GeometryContent* geometryContent,
                                    UpdateFlags::Type flags,
                                    StringParam contentOutputPath)
 {
+  // TODO: this is probably where materials should be generated and added to content library
+
   // Load the graph file with details of materials to generate
   String graphFile = FilePath::CombineWithExtension(contentOutputPath, geometryContent->Filename, ".graph.data");
   if (!FileExists(graphFile))

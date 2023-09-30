@@ -233,7 +233,7 @@ void MaterialProcessor::CreateMaterial(aiMaterial* material, uint materialIndex,
   HashMap<PropertySemantic, Variant> properties;
   HashMap<TextureSemantic, String> textures;
 
-  TryReadAssimpProperty<aiColor3D>(properties, PropertySemantic::DiffuseColor, *material, AI_MATKEY_COLOR_DIFFUSE);
+  TryReadAssimpProperty<aiColor4D>(properties, PropertySemantic::DiffuseColor, *material, AI_MATKEY_COLOR_DIFFUSE);
   TryReadAssimpProperty<float>(properties, PropertySemantic::MetallicValue, *material, AI_MATKEY_SHININESS_STRENGTH);
   TryReadAssimpProperty<float>(properties, PropertySemantic::RoughnessValue, *material, AI_MATKEY_SHININESS);
   TryReadAssimpProperty<aiColor3D>(properties, PropertySemantic::EmissiveColor, *material, AI_MATKEY_COLOR_EMISSIVE);
@@ -288,12 +288,41 @@ void MaterialProcessor::CreateMaterial(aiMaterial* material, uint materialIndex,
   // full length in bytes of pcData.
   String filePath = FilePath::CombineWithExtension(mOutputPath, filename, BuildString(".", extension));
   
-  Material* zeroMat = MaterialManager::GetInstance()->CreateNewResource(filename);
+  //Material* m = MaterialManager::GetInstance()->FindOrNull("ZeroMaterial");
 
-  MaterialBlock diffuseColor;
-  zeroMat->Add(diffuseColor, 0);
+  Material* newMaterial = MaterialManager::GetInstance()->CreateNewResource(filename);
 
-  zeroMat->Save(filePath);
+  RenderGroup* opaqueRenderGroup = RenderGroupManager::FindOrNull("Opaque");
+  if (opaqueRenderGroup != nullptr)
+  {
+    newMaterial->mSerializedList.AddResource(opaqueRenderGroup->ResourceIdName);
+  }
+
+  RenderGroup* shadowCasterRenderGroup = RenderGroupManager::FindOrNull("ShadowCasters");
+  if (shadowCasterRenderGroup != nullptr)
+  {
+    newMaterial->mSerializedList.AddResource(shadowCasterRenderGroup->ResourceIdName);
+  }
+
+  if (properties[PropertySemantic::DiffuseColor] != nullptr)
+  {
+    BoundType* materialNodeType = MetaDatabase::FindType("AlbedoValue");
+    if (materialNodeType != nullptr)
+    {
+      MaterialBlockHandle block = MaterialFactory::GetInstance()->MakeObject(materialNodeType);
+      if (block->SetProperty("AlbedoValue", properties[PropertySemantic::DiffuseColor].GetOrError<Vec4>()))
+      {
+        newMaterial->Add(block, -1);
+      }
+    }
+  }
+
+  //Status status;
+  //AddContentItemInfo add;
+  //add.FileName = filename;
+  //ContentItem* materialContent = ContentSystem::GetInstance()->AddContentItemToLibrary(status, add);
+
+  newMaterial->Save(filePath);
 
   // WriteToFile(filePath.c_str(), (byte*)material->pcData, texture->mWidth);
 }
