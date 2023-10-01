@@ -15,6 +15,7 @@ public:
   uint UsageCount;
   // Name of material
   String Name;
+
   // Attributes of material
   HashMap<String, String> Attributes;
 
@@ -42,6 +43,8 @@ public:
   // Is this node a skeleton root
   bool IsSkeletonRoot;
 
+  // TODO: These fields need to be populated
+  
   // Materials use for this object
   Array<String> Materials;
   // Attributes of Node
@@ -67,6 +70,8 @@ public:
   // Root of Scene Graph
   SceneGraphNode* Root;
 
+  // TODO: These fields need to be populated
+  
   // Materials in Scene Graph
   Array<SceneGraphMaterial*> Materials;
 
